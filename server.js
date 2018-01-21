@@ -14,7 +14,13 @@ app.use(bodyParser.json())
 
 app.post('/processForm', function(req, res){
   let x = req.body.first;
-  console.log('Successfully uplodaded');
+  res.send('Successfully uplodaded');
+  fetch('http://api.walmartlabs.com/v1/items?apiKey=fhd34cqau75b2mgqxhuhjras&upc='+x)
+      .then(res => res.json())
+      .then(res => {
+      console.log(res.items[0].name)
+      console.log(res.items[0].thumbnailImage)
+  });
 });
 
 app.get('/*', function(req, res){
@@ -22,10 +28,3 @@ app.get('/*', function(req, res){
 });
 
 app.listen(3000);
-
-fetch('http://api.walmartlabs.com/v1/items?apiKey={Key}&upc='+x)
-    .then(res => res.json())
-    .then(res => {
-    console.log(res.items[0].name)
-    console.log(res.items[0].thumbnailImage)
-});

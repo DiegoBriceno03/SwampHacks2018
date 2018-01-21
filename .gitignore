@@ -2,4 +2,5 @@ importantStuff.txt
 HTTPrequest.sh
 key
 query.json
-
+package.json  
+package-lock.json
